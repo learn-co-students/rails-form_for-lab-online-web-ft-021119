@@ -1,11 +1,13 @@
 class StudentsController < ApplicationController
 
+
+
+
   def index
   end
-  
 
   def new
-    set_student
+    @student = Student.new
   end
 
   def create
@@ -24,6 +26,8 @@ class StudentsController < ApplicationController
 
   def update
     set_student
+    @student.update(params.require(:student).permit(:first_name, :last_name))
+    redirect_to student_path(@student)
   end
 
   private
