@@ -1,25 +1,31 @@
+require 'pry'
 class SchoolClassesController < ApplicationController
-    # def new
-
-    #     end
+    def new
+        @schoolclass = SchoolClass.new
+    end
 
         def create
             @schoolclass = SchoolClass.new(schoolclass_params(:title, :room_number))
+            # binding.pry
             @schoolclass.save
-            redirect_to school_classes_path(@schoolclass)
+            redirect_to school_class_path(@schoolclass)
         end
 
-    #     def show
+        def show
+            @schoolclass = SchoolClass.find(params[:id])
+            # binding.pry
+        end
 
-    #     end
+        def edit
+            @schoolclass = SchoolClass.find(params[:id])
+        end
 
-    #     def edit
-
-    #     end
-
-    #     def update
-
-    #     end
+        def update
+            @schoolclass = SchoolClass.find(params[:id])
+            @schoolclass.update(schoolclass_params(:title, :room_number))
+            # binding.pry
+            redirect_to school_class_path(@schoolclass)
+        end
 
         private
 

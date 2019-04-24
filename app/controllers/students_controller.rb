@@ -1,24 +1,29 @@
 class StudentsController < ApplicationController
-# new, create, show, edit, and update actions in each of the controllers.
-    def new
-
+     def new
+        @student = Student.new
     end
 
-    def create
+        def create
+            @student = Student.new(student_params(:first_name, :last_name))
+            @student.save
+            redirect_to student_path(@student)
+        end
 
-    end
+        def show
+            @student = Student.find(params[:id])
+            # binding.pry
+        end
 
-    def show
+        def edit
+            @student = Student.find(params[:id])
+        end
 
-    end
-
-    def edit
-
-    end
-
-    def update
-
-    end
+        def update
+            @student = Student.find(params[:id])
+            @student.update(student_params(:first_name, :last_name))
+            # binding.pry
+            redirect_to student_path(@student)
+        end
 
     private
 
