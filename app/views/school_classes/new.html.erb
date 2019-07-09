@@ -1,0 +1,15 @@
+<h1>School Class Form</h1>
+
+<form method ="post" action = "<%= school_classes_path %>" >
+
+
+<%= form_for(@school_class) do |f| %>
+  <label>School Class Title:</label><br>
+  <%= f.text_field :title %><br>
+
+  <label>Room Number:</label><br>
+  <%= f.text_area :room_number %><br>
+
+  <%= f.submit %>
+<% end %>
+</form>
